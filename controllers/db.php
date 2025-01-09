@@ -1,10 +1,10 @@
 <?php
-$host = "localhost";
-$user = "dikiraha";
-$pass = "842002Mddn!";
-$dbname = "certifyme";
+$host = 'localhost';
+$database = 'certify_db';
+$username = 'root';
+$password = '';
 
-$conn = new mysqli($host, $user, $pass, $dbname);
+$conn = new mysqli($host, $username, $password, $database);
 
 if ($conn->connect_error) {
 

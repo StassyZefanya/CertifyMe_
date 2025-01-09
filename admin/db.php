@@ -1,9 +1,9 @@
 <?php
 // Koneksi database
 $host = "localhost";
-$user = "dikiraha";
-$pass = "842002Mddn!";
-$dbname = "certifyme";
+$user = "root";
+$pass = "";
+$dbname = "certify_db";
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
