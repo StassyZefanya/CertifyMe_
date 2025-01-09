@@ -16,7 +16,7 @@ require_once '../controllers/auth_admin.php'; // Memastikan hanya admin yang bis
 
 <body>
   <div id="app">
-    <div class="main-wrapper main-wrapper-1">
+    <div class="main-wrapper ">
       <!-- Sidebar -->
       <?php include 'resources/sidebar.php'; ?>
 

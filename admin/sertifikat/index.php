@@ -15,7 +15,7 @@
 
 <body>
     <div id="app">
-        <div class="main-wrapper main-wrapper-1">
+        <div class="main-wrapper">
 
             <?php
             $status = isset($_GET['status']) ? $_GET['status'] : '';

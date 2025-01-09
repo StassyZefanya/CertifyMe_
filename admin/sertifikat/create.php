@@ -16,7 +16,7 @@
 
 <body>
     <div id="app">
-        <div class="main-wrapper main-wrapper-1">
+        <div class="main-wrapper">
 
 
             <!-- Sidebar -->
@@ -43,7 +43,7 @@
                         <h1>Tambah Sertifikat</h1>
                     </div>
 
-                    <a class="btn btn-primary" href="index.php">Kembali</a>
+                    <a class="btn btn-primary mb-3" href="index.php">Kembali</a>
 
                     <div class="section-body">
 

@@ -1,15 +1,12 @@
 <?php
-$host = 'localhost';
-$database = 'certify_db';
-$username = 'root';
-$password = '';
+$host = "localhost";
+$user = "dikiraha";
+$pass = "842002Mddn!";
+$dbname = "certifyme";
 
-$conn = new mysqli($host, $username, $password, $database); 
+$conn = new mysqli($host, $user, $pass, $dbname);
 
-if ($conn->connect_error) { 
+if ($conn->connect_error) {
 
- die("Koneksi gagal: " . $conn->connect_error); 
-
-} 
-
-?>
+    die("Koneksi gagal: " . $conn->connect_error);
+}

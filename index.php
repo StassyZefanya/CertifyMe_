@@ -195,9 +195,9 @@ while ($row = mysqli_fetch_assoc($result)) {
       <a href="#">
         <i data-feather="instagram"></i>
       </a>
-      <a href="#">
+      <!-- <a href="#">
         <i data-feather="facebook"></i>
-      </a>
+      </a> -->
     </div>
 
     <div class="links">

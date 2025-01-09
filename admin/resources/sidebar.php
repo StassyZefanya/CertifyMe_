@@ -14,10 +14,10 @@
     <li>
       <a
         href="#"
-        data-toggle=""
+        data-toggle="dropdown"
         class="nav-link nav-link-lg nav-link-user">
         <img
-          alt="image"
+          alt="User Avatar"
           src="../admin/assets/img/avatar/avatar-1.png"
           class="rounded-circle mr-1" />
         <div class="d-sm-none d-lg-inline-block">Hai, Admin</div>
@@ -35,7 +35,7 @@
     </div>
     <ul class="sidebar-menu">
       <li class="menu-header">Dashboard</li>
-      <li class="">
+      <li class="nav-item active">
         <a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a>
       </li>
       <li class="menu-header">Data</li>
