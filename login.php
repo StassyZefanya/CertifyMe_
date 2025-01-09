@@ -1,57 +1,57 @@
 <?php
-    session_start(); // Start session untuk mengecek apakah ada pesan error
+session_start(); // Start session untuk mengecek apakah ada pesan error
 
-    // Jika sudah login (session 'username' sudah ada), arahkan ke halaman welcome.php
-    if (isset($_SESSION['username'])) {
-        header("Location: dashboard/index.php");
-        exit();
-    } 
+// Jika sudah login (session 'username' sudah ada), arahkan ke halaman welcome.php
+if (isset($_SESSION['username'])) {
+  header("Location: dashboard/index.php");
+  exit();
+}
 
-    // Ambil pesan error jika ada
-    $error_message = isset($_SESSION['login_error']) ? $_SESSION['login_error'] : '';
-    // Hapus pesan error setelah ditampilkan
-    unset($_SESSION['login_error']);
+// Ambil pesan error jika ada
+$error_message = isset($_SESSION['login_error']) ? $_SESSION['login_error'] : '';
+// Hapus pesan error setelah ditampilkan
+unset($_SESSION['login_error']);
 ?>
 
 <?php
 include("controllers/db.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+  $username = $_POST['username'];
+  $password = $_POST['password'];
 
-    // Query untuk mengambil data user
-    $sql = "SELECT * FROM users WHERE username = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
+  // Query untuk mengambil data user
+  $sql = "SELECT * FROM users WHERE username = ?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("s", $username);
+  $stmt->execute();
+  $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
+  if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
 
-        // Verifikasi password
-        if (password_verify($password, $user['password'])) {
-            // Simpan data ke session
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = $user['role']; // Simpan role user
+    // Verifikasi password
+    if (password_verify($password, $user['password'])) {
+      // Simpan data ke session
+      $_SESSION['username'] = $user['username'];
+      $_SESSION['role'] = $user['role']; // Simpan role user
 
-            // Redirect berdasarkan role
-            if ($user['role'] === 'ADMIN') {
-                header("Location: admin/index.php");
-            } else {
-                header("Location: dashboard/index.php");
-            }
-            exit();
-        } else {
-            $_SESSION['login_error'] = "Password salah.";
-        }
+      // Redirect berdasarkan role
+      if ($user['role'] === 'ADMIN') {
+        header("Location: admin/index.php");
+      } else {
+        header("Location: dashboard/index.php");
+      }
+      exit();
     } else {
-        $_SESSION['login_error'] = "Username tidak ditemukan.";
+      $_SESSION['login_error'] = "Password salah.";
     }
+  } else {
+    $_SESSION['login_error'] = "Username tidak ditemukan.";
+  }
 
-    header("Location: login.php"); // Redirect kembali ke halaman login jika gagal
-    exit();
+  header("Location: login.php"); // Redirect kembali ke halaman login jika gagal
+  exit();
 }
 ?>
 
@@ -94,26 +94,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="card-header pb-0 text-left bg-transparent">
                   <h3 class="font-weight-bolder text-info text-gradient">Selamat Datang!</h3>
                   <?php if ($error_message): ?>
-                      <div style="color: red;">
-                          <?php echo $error_message; ?>
-                      </div>
+                    <div style="color: red;">
+                      <?php echo $error_message; ?>
+                    </div>
                   <?php endif; ?>
                   <!-- <p class="mb-0">Enter your email and password to sign in</p> -->
                 </div>
                 <div class="card-body">
-                    <form method="POST">
-                        <label>Username</label>
-                        <div class="mb-3">
-                            <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="username-addon">
-                        </div>
-                        <label>Password</label>
-                        <div class="mb-3">
-                            <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Masuk</button>
-                        </div>
-                    </form>
+                  <form method="POST">
+                    <label>Username</label>
+                    <div class="mb-3">
+                      <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="username-addon" autofocus>
+                    </div>
+                    <label>Password</label>
+                    <div class="mb-3">
+                      <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Masuk</button>
+                    </div>
+                  </form>
                 </div>
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-sm mx-auto">

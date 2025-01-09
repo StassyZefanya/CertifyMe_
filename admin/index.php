@@ -1,5 +1,5 @@
 <?php
-require_once '../controllers/auth_admin.php'; // Memastikan hanya admin yang bisa mengakses halaman ini
+require_once '../controllers/auth_admin.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ require_once '../controllers/auth_admin.php'; // Memastikan hanya admin yang bis
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title>Dashboard &mdash; CertifyMe</title>
 
-  <!-- <?php include 'resources/style.php'; ?> -->
+  <?php include 'resources/style.php'; ?>
 
 </head>
 
