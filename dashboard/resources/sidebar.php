@@ -69,5 +69,11 @@
                     <span class="nav-link-text ms-1">Data Sertifikat</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../controllers/logout.php">
+                    <span class="nav-link-text ms-1 btn btn-danger btn-sm">Logout</span>
+                </a>
+            </li>
+        </ul>
     </div>
 </aside>
