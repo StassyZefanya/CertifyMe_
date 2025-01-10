@@ -192,12 +192,12 @@ while ($row = mysqli_fetch_assoc($result)) {
   <!--FOOTER-->
   <footer>
     <div class="socials">
-      <a href="#">
-        <i data-feather="instagram"></i>
+      <a href="https://www.instagram.com/stassyzefanya?igsh=MXE5YW8wZjg0am4xbg%3D%3D&utm_source=qr" target="_blank">
+        <i class="bi bi-instagram"></i>
       </a>
-      <!-- <a href="#">
-        <i data-feather="facebook"></i>
-      </a> -->
+      <a href="https://wa.me/6285777743960" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+      </a>
     </div>
 
     <div class="links">
