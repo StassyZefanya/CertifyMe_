@@ -33,6 +33,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
   <!--stylecss-->
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
 
   <style>
     /* Ensure the navbar has space between logo and the toggle button */
@@ -170,18 +171,18 @@ while ($row = mysqli_fetch_assoc($result)) {
         referrerpolicy="no-referrer-when-downgrade"
         class="map"></iframe>
 
-      <form action="">
+      <form action="javascript:void(0);" id="contactForm">
         <div class="input-group">
           <i data-feather="user"></i>
-          <input type="text" placeholder="Nama" />
+          <input type="text" id="nama" placeholder="Nama" required />
         </div>
         <div class="input-group">
           <i data-feather="mail"></i>
-          <input type="text" placeholder="Email" />
+          <input type="text" id="email" placeholder="Email" required />
         </div>
         <div class="input-group">
           <i data-feather="phone"></i>
-          <input type="text" placeholder="No Handphone" />
+          <input type="text" id="phone" placeholder="No Handphone" required />
         </div>
         <button type="submit" class="btn">Kirim Pesan</button>
       </form>
@@ -195,9 +196,9 @@ while ($row = mysqli_fetch_assoc($result)) {
       <a href="https://www.instagram.com/stassyzefanya?igsh=MXE5YW8wZjg0am4xbg%3D%3D&utm_source=qr" target="_blank">
         <i class="bi bi-instagram"></i>
       </a>
-      <a href="https://wa.me/6285777743960" target="_blank">
+      <!-- <a href="https://wa.me/6285777743960" target="_blank">
         <i class="bi bi-whatsapp"></i>
-      </a>
+      </a> -->
     </div>
 
     <div class="links">
@@ -221,7 +222,28 @@ while ($row = mysqli_fetch_assoc($result)) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!--JS-->
   <script src="assets/js/script.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function() {
+      const nama = document.getElementById('nama').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+
+      // Buat isi pesan
+      const message = `Halo! Saya ${nama}, berikut adalah informasi saya:
+    - Email: ${email}
+    - No Handphone: ${phone}`;
+
+      // Encode pesan agar sesuai dengan format URL
+      const encodedMessage = encodeURIComponent(message);
+
+      // Buat link WhatsApp
+      const whatsappURL = `https://wa.me/6285777743960?text=${encodedMessage}`;
+
+      // Redirect ke link WhatsApp
+      window.open(whatsappURL, '_blank');
+    });
+  </script>
 </body>
 
 </html>
