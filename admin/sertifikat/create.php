@@ -10,7 +10,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Tambah Sertifikat &mdash; CertifyMe</title>
 
-    <!-- <?php include '../resources/style2.php'; ?> -->
+    <?php include '../resources/style2.php'; ?>
 
 </head>
 

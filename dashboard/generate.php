@@ -85,6 +85,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             display: block;
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 
 </head>
@@ -196,6 +197,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     </div>
                 </div>
             </form>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
             <script>
                 const backgroundImageSelect = document.getElementById('background_image');
@@ -230,34 +232,34 @@ while ($row = mysqli_fetch_assoc($result)) {
                     return isValid;
                 }
 
-                document.querySelectorAll('.vertical-stepper ul li').forEach((step, index) => {
-                    step.addEventListener('click', () => {
-                        document.querySelectorAll('.step-content').forEach(content => content.classList.remove('active'));
-                        document.querySelectorAll('.vertical-stepper ul li').forEach(item => item.classList.remove('active'));
-                        step.classList.add('active');
-                        document.getElementById(`content-${step.id.split('-')[1]}`).classList.add('active');
-                    });
-                });
+                // document.querySelectorAll('.vertical-stepper ul li').forEach((step, index) => {
+                //     step.addEventListener('click', () => {
+                //         document.querySelectorAll('.step-content').forEach(content => content.classList.remove('active'));
+                //         document.querySelectorAll('.vertical-stepper ul li').forEach(item => item.classList.remove('active'));
+                //         step.classList.add('active');
+                //         document.getElementById(`content-${step.id.split('-')[1]}`).classList.add('active');
+                //     });
+                // });
 
-                const nextButtons = document.querySelectorAll('.next-step');
-                nextButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        if (validateCurrentStep()) {
-                            const currentStep = document.querySelector('.step-content.active');
-                            const nextStep = currentStep.nextElementSibling;
-                            if (nextStep) {
-                                currentStep.classList.remove('active');
-                                nextStep.classList.add('active');
-                                const activeNavItem = document.querySelector('.vertical-stepper ul li.active');
-                                if (activeNavItem.nextElementSibling) {
-                                    activeNavItem.nextElementSibling.classList.add('active');
-                                }
-                            }
-                        } else {
-                            alert('Harap isi semua field yang diperlukan sebelum melanjutkan.');
-                        }
-                    });
-                });
+                // const nextButtons = document.querySelectorAll('.next-step');
+                // nextButtons.forEach(button => {
+                //     button.addEventListener('click', () => {
+                //         if (validateCurrentStep()) {
+                //             const currentStep = document.querySelector('.step-content.active');
+                //             const nextStep = currentStep.nextElementSibling;
+                //             if (nextStep) {
+                //                 currentStep.classList.remove('active');
+                //                 nextStep.classList.add('active');
+                //                 const activeNavItem = document.querySelector('.vertical-stepper ul li.active');
+                //                 if (activeNavItem.nextElementSibling) {
+                //                     activeNavItem.nextElementSibling.classList.add('active');
+                //                 }
+                //             }
+                //         } else {
+                //             alert('Harap isi semua field yang diperlukan sebelum melanjutkan.');
+                //         }
+                //     });
+                // });
 
                 const prevButtons = document.querySelectorAll('.prev-step');
                 prevButtons.forEach(button => {
@@ -309,7 +311,14 @@ while ($row = mysqli_fetch_assoc($result)) {
 
                         for (const input of inputs) {
                             if (!input.checkValidity()) {
-                                alert(`Harap isi semua field yang diperlukan di langkah ${currentStepIndex + 1}`);
+                                // alert(`Harap isi semua field yang diperlukan di langkah ${currentStepIndex + 1}`);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Lengkapi form',
+                                    text: 'Harap isi semua field yang diperlukan',
+                                    confirmButtonText: 'OK',
+                                    confirmButtonColor: '#d33',
+                                });
                                 input.focus();
                                 return false;
                             }
